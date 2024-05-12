@@ -1,5 +1,5 @@
-import express from "express";
-import dotenv from "dotenv";
+const express = require("express");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
@@ -45,3 +45,5 @@ async function postQuestion(url: string, body: { question: string }) {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+module.exports = app;

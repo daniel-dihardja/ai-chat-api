@@ -2,12 +2,11 @@
   "name": "ai-api-3d-chat",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "node api/index.ts",
-    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon api/index.ts"
   },
   "keywords": [],
   "author": "",
