@@ -20,7 +20,7 @@ app.post("/api/v1/toolchat", async (req, res) => {
   }
   const chatId = req.body.chatId;
   const url = `${process.env.FLOWISE_URL}/${process.env.TOOL_CHAT_ID}`;
-  res.send(await postQuestion(url, { message, chatId }));
+  res.send(await postQuestion(url, { question: message, chatId }));
 });
 
 app.post("/api/v1/docchat", async (req, res) => {
@@ -30,12 +30,12 @@ app.post("/api/v1/docchat", async (req, res) => {
   }
   const chatId = req.body.chatId;
   const url = `${process.env.FLOWISE_URL}/${process.env.DOC_CHAT_ID}`;
-  res.send(await postQuestion(url, { message, chatId }));
+  res.send(await postQuestion(url, { question: message, chatId }));
 });
 
 async function postQuestion(
   url: string,
-  body: { message: string; chatId?: string }
+  body: { question: string; chatId?: string }
 ) {
   const response = await fetch(url, {
     method: "POST",
