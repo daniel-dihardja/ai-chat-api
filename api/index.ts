@@ -19,7 +19,7 @@ app.post("/api/v1/toolchat", async (req, res) => {
     return res.status(400).send("Missing question");
   }
   const url = `${process.env.FLOWISE_URL}/${process.env.TOOL_CHAT_ID}`;
-  return await postQuestion(url, { question });
+  res.send(await postQuestion(url, { question }));
 });
 
 app.post("/api/v1/docchat", async (req, res) => {
@@ -28,7 +28,7 @@ app.post("/api/v1/docchat", async (req, res) => {
     return res.status(400).send("Missing question");
   }
   const url = `${process.env.FLOWISE_URL}/${process.env.DOC_CHAT_ID}`;
-  return await postQuestion(url, { question });
+  res.send(await postQuestion(url, { question }));
 });
 
 async function postQuestion(url: string, body: { question: string }) {
