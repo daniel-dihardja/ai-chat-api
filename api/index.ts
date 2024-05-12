@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("...");
+  res.send("ai chat proxy");
 });
 
 app.post("/api/v1/toolchat", async (req, res) => {
