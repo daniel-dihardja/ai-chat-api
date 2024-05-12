@@ -32,6 +32,7 @@ app.post("/api/v1/docchat", async (req, res) => {
 });
 
 async function postQuestion(url: string, body: { question: string }) {
+  console.log("url: ", url);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -39,6 +40,7 @@ async function postQuestion(url: string, body: { question: string }) {
     },
     body: JSON.stringify(body),
   });
+  console.log("response: ", response);
   return await response.json();
 }
 
