@@ -14,29 +14,29 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api/v1/toolchat", async (req, res) => {
-  const question = req.body.question;
-  if (!question) {
-    return res.status(400).send("Missing question");
+  const message = req.body.message;
+  if (!message) {
+    return res.status(400).send("Missing message");
   }
   const chatId = req.body.chatId;
   const url = `${process.env.FLOWISE_URL}/${process.env.TOOL_CHAT_ID}`;
-  res.send(await postQuestion(url, { question, chatId }));
+  res.send(await postQuestion(url, { message, chatId }));
 });
 
 app.post("/api/v1/docchat", async (req, res) => {
-  const question = req.body.question;
-  if (!question) {
-    return res.status(400).send("Missing question");
+  const message = req.body.message;
+  if (!message) {
+    return res.status(400).send("Missing message");
   }
+  const chatId = req.body.chatId;
   const url = `${process.env.FLOWISE_URL}/${process.env.DOC_CHAT_ID}`;
-  res.send(await postQuestion(url, { question }));
+  res.send(await postQuestion(url, { message, chatId }));
 });
 
 async function postQuestion(
   url: string,
-  body: { question: string; chatId?: string }
+  body: { message: string; chatId?: string }
 ) {
-  console.log("url: ", url);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -44,7 +44,6 @@ async function postQuestion(
     },
     body: JSON.stringify(body),
   });
-  console.log("response: ", response);
   return await response.json();
 }
 
